@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Activate class-based dark mode
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <style>
+    /* Work Grid Section */
+    #work {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 40px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 10px;
+    }
+
+    #work .project-link { text-decoration: none; color: inherit; }
+    #work figure {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    #work figure:hover { transform: scale(1.03); }
+    #work img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    #work figcaption { padding: 12px; display: flex; justify-content: space-between; font-size: 14px; font-weight: 500; }
+    #work figcaption .tag { background: #111; color: #fff; font-size: 12px; padding: 2px 8px; border-radius: 8px; }
+
+    /* Navbar Dropdown Menu */
+    .navbar li { position: relative; }
+    .navbar li ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 160px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      z-index: 50;
+    }
+    .navbar li:hover > ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .navbar li ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+    }
+    .navbar li ul li a:hover { background-color: #3b82f6; color: white; }
+    .dark .navbar li ul { background-color: #1f2937; }
+    .dark .navbar li ul li a:hover { background-color: #2563eb; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-500">
+
+<!-- Navigation Bar -->
+<header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- Desktop & Mobile Navigation Links -->
+    <ul id="navLinks" class="hidden flex-col space-y-4 font-medium md:flex md:flex-row md:space-x-6 md:space-y-0">
+      <li><a href="index.html" class="hover:text-blue-500 transition-colors">Home</a></li>
+      <li><a href="About.html" class="hover:text-blue-500 transition-colors">About</a></li>
+      <li><a href="Services.html" class="hover:text-blue-500 transition-colors">Services</a></li>
+      <li><a href="contacts.html" class="hover:text-blue-500 transition-colors">Contacts</a></li>
+    </ul>
+<!-- Glowing Link Button -->
+<a href="index.html" class="glow-button">Back</a>
+
+<!-- CSS -->
+<style>
+.glow-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 0 5px #4CAF50, 0 0 10px #4CAF50, 0 0 20px #4CAF50; /* Glow effect */
+    transition: 0.3s; /* Smooth hover transition */
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50, 0 0 30px #4CAF50; /* Brighter glow on hover */
+}
+</style>
+    <!-- Buttons -->
+    <div class="flex items-center space-x-2">
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="md:hidden px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white">☰</button>
+
+      <!-- Dark/Light Mode Button -->
+      <button id="modeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md shadow">🌙 Dark Mode</button>
+    </div>
+  </nav>
+</header>
+
+<!-- Light/Dark Toggle & Mobile Menu Script -->
+<script>
+  const toggleBtn = document.getElementById("modeToggle");
+  const html = document.documentElement;
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    if (html.classList.contains("dark")) {
+      toggleBtn.textContent = "☀️ Light Mode";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙 Dark Mode";
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("hidden");
+  });
+</script>
+
+<!-- Hero Section -->
+<section class="bg-white dark:bg-gray-800 py-20">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center">
+    <!-- Left Text -->
+    <div class="max-w-lg space-y-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold">
+        About <span class="text-yellow-400">Goodhope Technology</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300">
+        At Goodhope Technology, we provide top-notch computer maintenance, device sales, graphics design, and professional computer hygiene services. 
+        Our mission is to empower businesses and individuals with reliable technology solutions.
+      </p>
+    </div>
+    <!-- Right Image -->
+    <div class="mt-10 md:mt-0 md:ml-10">
+      <img src="home2.jpg" alt="About Goodhope" class="w-full max-w-md rounded-2xl shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Mission & Vision Section -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+      <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        To deliver reliable and professional technology services, helping clients maintain, upgrade, and optimize their computers and devices.
+      </p>
+    </div>
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md">
+      <h2 class="text-2xl font-bold mb-4">Our Vision</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        To be the most trusted technology partner in Tanzania and beyond, providing innovative solutions and exceptional customer service.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10">Meet Our Team</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      <!-- Team Member -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <img src="men 1.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold">John Doe</h3>
+        <p class="text-gray-700 dark:text-gray-300">Computer Technician</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <img src="woman 1.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold">Jane Smith</h3>
+        <p class="text-gray-700 dark:text-gray-300">Graphics Designer</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <img src="men 2.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold">Ali Khamis</h3>
+        <p class="text-gray-700 dark:text-gray-300">IT Support</p>
+      </div>
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+        <img src="woman 2.jpg" alt="Team Member" class="w-32 h-32 mx-auto rounded-full object-cover mb-4">
+        <h3 class="text-xl font-bold">Mary Mwajuma</h3>
+        <p class="text-gray-700 dark:text-gray-300">Sales & Marketing</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 dark:bg-gray-800 text-white text-center py-6 mt-auto">
+  <p>&copy; 2025 Goodhope Technology. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

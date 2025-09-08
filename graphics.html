@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphics Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Activate class-based dark mode
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+    <style>
+    /* Work Grid Section */
+#work {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 900px;      /* keeps the grid small */
+  margin: 30px auto;     /* centers the section */
+  padding: 10px;
+}
+
+/* Project cards */
+#work .project-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#work figure {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+#work figure:hover {
+  transform: scale(1.03);
+}
+
+/* Image */
+#work img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption */
+#work figcaption {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#work figcaption .tag {
+  background: #111;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+
+/* Navbar Dropdown Menu */
+.navbar li {
+  position: relative;
+}
+
+/* Hide the dropdown initially */
+.navbar li ul {
+  position: absolute;
+  top: 100%; /* Just below the parent li */
+  left: 0;
+  width: 160px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+  z-index: 50;
+}
+
+/* Show dropdown on hover */
+.navbar li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown links */
+.navbar li ul li a {
+  display: block;
+  padding: 10px 15px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+/* Hover effect */
+.navbar li ul li a:hover {
+  background-color: #3b82f6; /* Tailwind Blue-500 */
+  color: white;
+}
+
+/* Dark mode adjustments */
+.dark .navbar li ul {
+  background-color: #1f2937; /* Tailwind Gray-800 */
+}
+
+.dark .navbar li ul li a:hover {
+  background-color: #2563eb; /* Tailwind Blue-600 */
+}
+
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-500">
+
+<!-- Navigation Bar -->
+<header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- Navigation Links -->
+<ul class="hidden md:flex space-x-6 font-medium">
+  <li><a href="index.html" class="hover:text-blue-500 transition-colors">Home</a></li>
+  <li><a href="About.html" class="hover:text-blue-500 transition-colors">About</a></li>
+  <li><a href="Services.html" class="hover:text-blue-500 transition-colors">Services</a></li>
+
+  <li><a href="contacts.html" class="hover:text-blue-500 transition-colors">Contacts</a></li>
+</ul>
+
+    <!-- Normal Button -->
+<!-- Link styled as button -->
+<!-- Glowing Link Button -->
+<a href="Services.html" class="glow-button">Back</a>
+
+<!-- CSS -->
+<style>
+.glow-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 0 5px #4CAF50, 0 0 10px #4CAF50, 0 0 20px #4CAF50; /* Glow effect */
+    transition: 0.3s; /* Smooth hover transition */
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50, 0 0 30px #4CAF50; /* Brighter glow on hover */
+}
+</style>
+    <!-- Dark/Light Mode Button -->
+    <button id="modeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md shadow">
+      🌙 Dark Mode
+    </button>
+  </nav>
+</header>
+<script>
+  const btn = document.getElementById('videosBtn');
+  const dropdown = document.getElementById('videosDropdown');
+
+  // Toggle dropdown on click
+  btn.addEventListener('click', () => {
+    dropdown.classList.toggle('hidden');
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+</script>
+<!-- Light/Dark Toggle Script -->
+<script>
+  const toggleBtn = document.getElementById("modeToggle");
+  const html = document.documentElement;
+
+  // Load saved mode
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    if (html.classList.contains("dark")) {
+      toggleBtn.textContent = "☀️ Light Mode";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙 Dark Mode";
+      localStorage.setItem("theme", "light");
+    }
+  });
+</script>
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-16 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold">Graphics Design</h1>
+      <p class="mt-4 text-lg md:text-xl max-w-2xl mx-auto">
+        Stunning designs for your brand, marketing materials, and creative projects.
+      </p>
+    </section>
+
+    <!-- Services Section -->
+    <section class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Design Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition transform hover:scale-105 p-6 text-center">
+            <h3 class="font-semibold text-xl mb-2">Logo Design</h3>
+            <p class="text-gray-600 dark:text-gray-300">Custom logos that represent your brand with creativity and professionalism.</p>
+          </div>
+          <!-- Service 2 -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition transform hover:scale-105 p-6 text-center">
+            <h3 class="font-semibold text-xl mb-2">Flyers & Posters</h3>
+            <p class="text-gray-600 dark:text-gray-300">Attractive marketing materials to catch attention and promote your business.</p>
+          </div>
+          <!-- Service 3 -->
+          <div class="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition transform hover:scale-105 p-6 text-center">
+            <h3 class="font-semibold text-xl mb-2">Social Media Graphics</h3>
+            <p class="text-gray-600 dark:text-gray-300">Engaging visuals for social media campaigns that boost interaction and reach.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 py-16">
+      <div class="max-w-7xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-12">Portfolio</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition transform hover:scale-105 overflow-hidden">
+            <img src="comp-Acessory.gif" alt="Design 1" class="w-full h-68 object-cover">
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition transform hover:scale-105 overflow-hidden">
+            <img src="muheza.png" alt="Design 2" class="w-full h-68 object-cover">
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition transform hover:scale-105 overflow-hidden">
+            <img src="graphics.jpg" alt="Design 3" class="w-full h-68 object-cover">
+          </div>
+          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-md transition transform hover:scale-105 overflow-hidden">
+            <img src="poster.jpg" alt="Design 4" class="w-full h-68 object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="bg-gray-100 dark:bg-gray-800 py-16 text-center">
+      <h2 class="text-3xl font-bold mb-6">Ready to Start Your Project?</h2>
+      <p class="mb-6 text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">Contact us today and let our creative team bring your ideas to life!</p>
+      <a href="contacts.html" class="px-6 py-3 bg-teal-500 text-white rounded-lg shadow hover:bg-teal-600 transition">Contact Us</a>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-gray-800 text-white text-center py-6">
+    <p>&copy; 2025 Goodhope Technology. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

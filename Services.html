@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-500">
+
+<!-- Navigation Bar -->
+<header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Navigation Links -->
+    <ul id="navLinks" class="hidden flex-col space-y-4 font-medium md:flex md:flex-row md:space-x-6 md:space-y-0">
+      <li><a href="index.html" class="hover:text-blue-500 transition-colors">Home</a></li>
+      <li><a href="About.html" class="hover:text-blue-500 transition-colors">About</a></li>
+      <li><a href="Services.html" class="hover:text-blue-500 transition-colors">Services</a></li>
+      <li><a href="contacts.html" class="hover:text-blue-500 transition-colors">Contacts</a></li>
+    </ul>
+    <!-- Normal Button -->
+<!-- Link styled as button -->
+<!-- Glowing Link Button -->
+<a href="index.html" class="glow-button">Back</a>
+
+<!-- CSS -->
+<style>
+.glow-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 0 5px #4CAF50, 0 0 10px #4CAF50, 0 0 20px #4CAF50; /* Glow effect */
+    transition: 0.3s; /* Smooth hover transition */
+}
+
+.glow-button:hover {
+    box-shadow: 0 0 10px #4CAF50, 0 0 20px #4CAF50, 0 0 30px #4CAF50; /* Brighter glow on hover */
+}
+</style>
+    <div class="flex items-center space-x-2">
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="md:hidden px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white">☰</button>
+      <!-- Dark/Light Mode Button -->
+      <button id="modeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md shadow">🌙 Dark Mode</button>
+    </div>
+  </nav>
+</header>
+
+<!-- Services Section -->
+<section class="bg-gray-900 text-gray-100 py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-12">Our Services</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <!-- Service 1 -->
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition flex flex-col justify-between">
+        <div>
+          <img src="main.jpg" alt="Maintenance" class="w-24 h-24 mb-5 mx-auto">
+          <h3 class="text-xl font-semibold mb-2 text-center">Computer Maintenance</h3>
+          <p class="text-gray-300 text-sm text-center">
+            Keep your computers running smoothly with expert repairs and optimization.
+          </p>
+        </div>
+        <a href="maintenance.html" class="mt-4 text-teal-400 font-semibold hover:underline text-center">Learn More →</a>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition flex flex-col justify-between">
+        <div>
+          <img src="pcs.jpg" alt="Devices" class="w-24 h-24 mb-5 mx-auto">
+          <h3 class="text-xl font-semibold mb-2 text-center">Computer Sales</h3>
+          <p class="text-gray-300 text-sm text-center">
+            High-quality computers and accessories for personal and business needs.
+          </p>
+        </div>
+        <a href="sales.html" class="mt-4 text-teal-400 font-semibold hover:underline text-center">Learn More →</a>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition flex flex-col justify-between">
+        <div>
+          <img src="graphics.jpg" alt="Graphics Design" class="w-24 h-24 mb-5 mx-auto">
+          <h3 class="text-xl font-semibold mb-2 text-center">Graphics Design</h3>
+          <p class="text-gray-300 text-sm text-center">
+            Creative designs that make your brand and projects stand out.
+          </p>
+        </div>
+        <a href="graphics.html" class="mt-4 text-teal-400 font-semibold hover:underline text-center">Learn More →</a>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transform transition flex flex-col justify-between">
+        <div>
+          <img src="camera.jpg" alt="Camera Installation" class="w-24 h-24 mb-5 mx-auto">
+          <h3 class="text-xl font-semibold mb-2 text-center">Camera Installation</h3>
+          <p class="text-gray-300 text-sm text-center">
+            Professional CCTV and security camera setup for home or business.
+          </p>
+        </div>
+        <a href="camera.html" class="mt-4 text-teal-400 font-semibold hover:underline text-center">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script>
+  // Dark/Light mode
+  const toggleBtn = document.getElementById("modeToggle");
+  const html = document.documentElement;
+  if(localStorage.getItem("theme")==="dark"){ html.classList.add("dark"); toggleBtn.textContent="☀️ Light Mode"; }
+  toggleBtn.addEventListener("click", ()=>{
+    html.classList.toggle("dark");
+    if(html.classList.contains("dark")){ toggleBtn.textContent="☀️ Light Mode"; localStorage.setItem("theme","dark"); }
+    else{ toggleBtn.textContent="🌙 Dark Mode"; localStorage.setItem("theme","light"); }
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+  menuBtn.addEventListener("click", ()=>{ navLinks.classList.toggle("hidden"); });
+</script>
+
+</body>
+</html>

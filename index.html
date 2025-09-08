@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodHope Technology</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Activate class-based dark mode
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <style>
+    /* Work Grid Section */
+    #work {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 40px;
+      max-width: 900px;      
+      margin: 30px auto;     
+      padding: 10px;
+    }
+
+    /* Project cards */
+    #work .project-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    #work figure {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    #work figure:hover {
+      transform: scale(1.03);
+    }
+
+    /* Image */
+    #work img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Caption */
+    #work figcaption {
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    #work figcaption .tag {
+      background: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 8px;
+    }
+
+    /* Navbar Dropdown Menu */
+    .navbar li {
+      position: relative;
+    }
+
+    /* Hide the dropdown initially */
+    .navbar li ul {
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      width: 160px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      transform: translateY(10px);
+      z-index: 50;
+    }
+
+    /* Show dropdown on hover */
+    .navbar li:hover > ul {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Dropdown links */
+    .navbar li ul li a {
+      display: block;
+      padding: 10px 15px;
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+    }
+
+    /* Hover effect */
+    .navbar li ul li a:hover {
+      background-color: #3b82f6; 
+      color: white;
+    }
+
+    /* Dark mode adjustments */
+    .dark .navbar li ul {
+      background-color: #1f2937; 
+    }
+
+    .dark .navbar li ul li a:hover {
+      background-color: #2563eb; 
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col transition-colors duration-500">
+
+<!-- Navigation Bar -->
+<header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
+  <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <!-- Logo + Profile Image -->
+    <div class="flex items-center space-x-4">
+      <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-gray-300 shadow-md">
+        <img src="logo.jpg" alt="Profile Image" class="w-full h-full object-cover">
+      </div>
+      <div class="text-2xl font-bold tracking-wide">GoodHope<br> Technology</div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <ul id="navLinks" class="hidden flex-col space-y-4 font-medium md:flex md:flex-row md:space-x-6 md:space-y-0">
+      <li><a href="About.html" class="hover:text-blue-500 transition-colors">About</a></li>
+      <li><a href="services.html" class="hover:text-blue-500 transition-colors">Services</a></li>
+      <li><a href="contacts.html" class="hover:text-blue-500 transition-colors">Contacts</a></li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="flex items-center space-x-2">
+      <!-- Mobile Menu Button -->
+      <button id="menuToggle" class="md:hidden px-3 py-2 rounded-md bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white">
+        ☰
+      </button>
+
+      <!-- Dark/Light Mode Button -->
+      <button id="modeToggle" class="px-4 py-2 bg-gray-200 dark:bg-gray-700 dark:text-white rounded-md shadow">
+        🌙 Dark Mode
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-gray-800 to-gray-900 text-white py-20">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+    <!-- Left Text -->
+    <div class="max-w-lg space-y-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        Welcome to <span class="text-teal-400">Goodhope Technology</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-300">
+        Your trusted partner in computer maintenance, sales of devices,
+        graphics design, and professional computer hygiene.
+      </p>
+      <div class="space-x-4">
+        <a href="Services.html" class="px-6 py-3 bg-teal-500 text-white rounded-lg shadow-lg font-semibold hover:bg-teal-600 transition">
+          Explore Services
+        </a>
+        <a href="contacts.html" class="px-6 py-3 bg-gray-700 text-white rounded-lg shadow-lg font-semibold hover:bg-gray-600 transition">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Image -->
+    <div class="mt-10 md:mt-0">
+      <img src="home.jpg" alt="Technology Image"
+        class="w-full max-w-md rounded-2xl shadow-lg">
+    </div>
+  </div>
+</section>
+
+<!-- Work Grid -->
+<section id="work" aria-label="Selected work" class="grid">
+  <!-- Project Card 1 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="progress.jpg" alt="Project One — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Graphics Design</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+  <!-- Project Card 2 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="window.jpg" alt="Project Two — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Window</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+  <!-- Project Card 3 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="it.jpg" alt="Project Three — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Software</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+  <!-- Project Card 4 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="camera.jpg" alt="Project Four — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Camera Installation</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+  <!-- Project Card 5 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="comp2.jpg" alt="Project Five — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Computer Hygiene</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+  <!-- Project Card 6 -->
+  <a class="project-link" href="#">
+    <figure class="zoom">
+      <img src="001.jpg" alt="Project Six — brief descriptive alt text" loading="lazy" />
+      <figcaption>
+        <span style="color: #1f2937;">Maintenance</span>
+        <span class="tag">2025</span>
+      </figcaption>
+    </figure>
+  </a>
+</section>
+</main>
+
+<footer class="bg-gray-900 dark:bg-gray-800 text-white text-center py-6">
+  <p>&copy; 2025 Harmonic. All Rights Reserved.</p>
+</footer>
+
+<!-- Light/Dark Toggle & Mobile Menu Script -->
+<script>
+  const toggleBtn = document.getElementById("modeToggle");
+  const html = document.documentElement;
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    html.classList.add("dark");
+    toggleBtn.textContent = "☀️ Light Mode";
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    html.classList.toggle("dark");
+    if (html.classList.contains("dark")) {
+      toggleBtn.textContent = "☀️ Light Mode";
+      localStorage.setItem("theme", "dark");
+    } else {
+      toggleBtn.textContent = "🌙 Dark Mode";
+      localStorage.setItem("theme", "light");
+    }
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("hidden");
+  });
+</script>
+</body>
+</html>
